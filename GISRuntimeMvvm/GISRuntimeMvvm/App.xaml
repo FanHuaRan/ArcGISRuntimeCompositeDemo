@@ -1,0 +1,9 @@
+﻿<Application x:Class="GISRuntimeMvvm.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <!--viewmodel定位器-->
+        <vm:ViewModelLocator xmlns:vm="clr-namespace:GISRuntimeMvvm" x:Key="Locator" />
+    </Application.Resources>
+</Application>

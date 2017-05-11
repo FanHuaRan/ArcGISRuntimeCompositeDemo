@@ -1,0 +1,124 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:my="clr-namespace:GISRuntimeMvvm"
+        xmlns:esri="http://schemas.esri.com/arcgis/runtime/2013" x:Class="GISRuntimeMvvm.MainWindow"
+         Title="GISRuntimeMvvm" Height="700" Width="1200" BorderThickness="0" 
+        WindowStartupLocation="CenterScreen"
+         DataContext="{Binding Source={StaticResource Locator}, Path=MainPageViewModel}">
+    <Grid Margin="5px">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="7*"/>
+            <RowDefinition Height="48*"/>
+        </Grid.RowDefinitions>
+        
+        <!--头部-->
+        <Grid Grid.Row="0" Name="header">
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <!--菜单栏-->
+            <Menu HorizontalAlignment="Left" Grid.Row="0" >
+                <MenuItem>文件</MenuItem>
+                <MenuItem>文件</MenuItem>
+            </Menu>
+            <!--toolbar-->
+            <ToolBarPanel HorizontalAlignment="Left" Grid.Row="1">
+                <ToolBar>
+                    <Button>
+                        <Image></Image>
+                    </Button>
+                </ToolBar>
+            </ToolBarPanel>
+        </Grid>
+        
+        <!--主体-->
+        <Grid Grid.Row="1" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200*"/>
+                <ColumnDefinition Width="723*"/>
+            </Grid.ColumnDefinitions>
+            
+            <!--主题左边-->
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30*"/>
+                    <RowDefinition Height="15*"/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <!--地图图层-->
+                    <Border Background="LightGray" BorderBrush="Black" BorderThickness="0,0,2,0">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                            <!--只是标题-->
+                            <TextBlock Margin="20" FontSize="12pt">
+                                <Run Text="地图图层" FontWeight="Bold" />
+                                <Run Text="可拖动" />
+                            </TextBlock>
+                            <!--图层list-->
+                            <ListView x:Name="legend" Grid.Row="1" BorderBrush="Transparent" Background="Transparent" ItemsSource="{Binding LegendLayers}"
+						              AllowDrop="True">
+                                <ListView.ItemContainerStyle>
+                                    <Style TargetType="ListViewItem">
+                                        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                                    </Style>
+                                </ListView.ItemContainerStyle>
+
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <Border BorderBrush="DarkGray" BorderThickness="2" Padding="4">
+                                            <StackPanel>
+                                                <TextBlock Text="{Binding DisplayName}" FontSize="18" FontWeight="Bold" Margin="0,4" />
+                                                <Grid>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition />
+                                                        <ColumnDefinition Width="Auto" />
+                                                    </Grid.ColumnDefinitions>
+                                                    <StackPanel>
+                                                        <CheckBox Content="Enabled" IsChecked="{Binding IsVisible, Mode=TwoWay}" Margin="6,2"/>
+                                                        <Slider Margin="0,0,20,0" Value="{Binding Opacity, Mode=TwoWay}" TickFrequency="0.01" Minimum="0" Maximum="1" />
+                                                    </StackPanel>
+                                                    <Button Grid.Column="1" Content="Remove" Padding="12,4" Tag="{Binding}"/>
+                                                </Grid>
+                                            </StackPanel>
+                                        </Border>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </Grid>
+                    </Border>
+                </Grid>
+                <!--鹰眼mapview-->
+                <esri:MapView x:Name="smallMapView" Grid.Row="1" BorderThickness="2">
+                    <esri:Map></esri:Map>
+                </esri:MapView>
+            </Grid>
+            
+            <!--主题右部-->
+            <Grid Grid.Column="1">
+                <TabControl>
+                    
+                    <!--地图控件-->
+                    <TabItem Header="二维地图">
+                        <esri:MapView>
+                            <esri:Map x:Name="mainMap" Layers="{Binding LegendLayers,Mode=TwoWay}">
+
+                            </esri:Map>
+                        </esri:MapView>
+                    </TabItem>
+                    
+                    <!--三维场景控件-->
+                    <TabItem Header="三维场景">
+                        <esri:SceneView>
+                            <esri:Scene></esri:Scene>
+                        </esri:SceneView>
+                    </TabItem>
+                </TabControl>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>
