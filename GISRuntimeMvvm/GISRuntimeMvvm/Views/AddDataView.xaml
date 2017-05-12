@@ -1,0 +1,9 @@
+﻿<Window x:Class="GISRuntimeMvvm.Views.AddDataView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="AddDataView" Height="300" Width="300"
+        DataContext="{Binding Source={StaticResource Locator},Path=AddDataViewModel}">
+    <Grid>
+        
+    </Grid>
+</Window>

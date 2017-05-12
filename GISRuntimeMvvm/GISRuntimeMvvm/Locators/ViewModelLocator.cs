@@ -50,6 +50,12 @@ namespace GISRuntimeMvvm
             get { return new MainPageViewModel(); }
         }
 
+        // Create AddDataViewModel on demand
+        public AddDataViewModel AddDataViewModel
+        {
+            get { return new AddDataViewModel(); }
+        }
+
         // Create CustomerViewModel on demand
         public CustomerViewModel CustomerViewModel
         {

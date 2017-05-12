@@ -1,11 +1,20 @@
-﻿<Window
+﻿<Window x:Class="GISRuntimeMvvm.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:my="clr-namespace:GISRuntimeMvvm"
-        xmlns:esri="http://schemas.esri.com/arcgis/runtime/2013" x:Class="GISRuntimeMvvm.MainWindow"
-         Title="GISRuntimeMvvm" Height="700" Width="1200" BorderThickness="0" 
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
+        xmlns:esri="http://schemas.esri.com/arcgis/runtime/2013" 
+        Title="GISRuntimeMvvm" Height="700" Width="1200" BorderThickness="0" 
         WindowStartupLocation="CenterScreen"
-         DataContext="{Binding Source={StaticResource Locator}, Path=MainPageViewModel}">
+        DataContext="{Binding Source={StaticResource Locator}, Path=MainPageViewModel}">
+    <!--绑定load命令-->
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadCommand}" CommandParameter="{Binding ElementName=mainMapView}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    
     <Grid Margin="5px">
         <Grid.RowDefinitions>
             <RowDefinition Height="7*"/>
@@ -13,25 +22,31 @@
         </Grid.RowDefinitions>
         
         <!--头部-->
-        <Grid Grid.Row="0" Name="header">
-            <Grid.RowDefinitions>
+        <DockPanel Grid.Row="0" Name="header">
+            <!--<Grid.RowDefinitions>
                 <RowDefinition></RowDefinition>
                 <RowDefinition></RowDefinition>
-            </Grid.RowDefinitions>
+            </Grid.RowDefinitions>-->
             <!--菜单栏-->
-            <Menu HorizontalAlignment="Left" Grid.Row="0" >
-                <MenuItem>文件</MenuItem>
-                <MenuItem>文件</MenuItem>
+            <Menu HorizontalAlignment="Left" DockPanel.Dock="Top">
+                <MenuItem Header="文件"></MenuItem>
+                <MenuItem Header="关于"></MenuItem>
+                <MenuItem Header="帮助"></MenuItem>
             </Menu>
             <!--toolbar-->
-            <ToolBarPanel HorizontalAlignment="Left" Grid.Row="1">
+            <ToolBarPanel HorizontalAlignment="Left" DockPanel.Dock="Top">
                 <ToolBar>
                     <Button>
-                        <Image></Image>
+                        <Image Source="Resources\icons\DataAdd_B_32.png"></Image>
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Click">
+                                <ei:CallMethodAction  TargetObject="{Binding}" MethodName="AddData"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
                     </Button>
                 </ToolBar>
             </ToolBarPanel>
-        </Grid>
+        </DockPanel>
         
         <!--主体-->
         <Grid Grid.Row="1" >
@@ -94,7 +109,7 @@
                 </Grid>
                 <!--鹰眼mapview-->
                 <esri:MapView x:Name="smallMapView" Grid.Row="1" BorderThickness="2">
-                    <esri:Map></esri:Map>
+                    <esri:Map Layers="{Binding  LegendLayers,Mode=OneWay}"></esri:Map>
                 </esri:MapView>
             </Grid>
             
@@ -104,9 +119,10 @@
                     
                     <!--地图控件-->
                     <TabItem Header="二维地图">
-                        <esri:MapView>
-                            <esri:Map x:Name="mainMap" Layers="{Binding LegendLayers,Mode=TwoWay}">
-
+                        <esri:MapView x:Name="mainMapView">
+                            <esri:Map x:Name="mainMap">
+                                <esri:ArcGISTiledMapServiceLayer  
+                                    ServiceUri="http://services.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer"/>
                             </esri:Map>
                         </esri:MapView>
                     </TabItem>

@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-E:\Programing\c#\GISRuntimeMvvm\GISRuntimeMvvm\obj\x86\Debug\
+E:\Programing\c#\ArcGISRuntimeCompositeDemo\GISRuntimeMvvm\GISRuntimeMvvm\obj\x86\Debug\
 GISRuntimeMvvm
 none
 false
 DEBUG;TRACE
-E:\Programing\c#\GISRuntimeMvvm\GISRuntimeMvvm\App.xaml
-2-1445408872
+E:\Programing\c#\ArcGISRuntimeCompositeDemo\GISRuntimeMvvm\GISRuntimeMvvm\App.xaml
+3-1188454893
 
-16-1547151141
-221193404490
-Views\CustomerView.xaml;MainWindow.xaml;
+18-1881229341
+221920637065
+Views\AddDataView.xaml;Views\CustomerView.xaml;MainWindow.xaml;
 
-False
+True
 

@@ -8,6 +8,8 @@ using SimpleMvvmToolkit;
 using System.Collections;
 using Esri.ArcGISRuntime.Layers;
 using System.Collections.Generic;
+using Esri.ArcGISRuntime.Controls;
+using GISRuntimeMvvm.Views;
 
 namespace GISRuntimeMvvm
 {
@@ -20,7 +22,7 @@ namespace GISRuntimeMvvm
     public class MainPageViewModel : ViewModelBase<MainPageViewModel>
     {
         //Fields
-        private IEnumerable<Layer> _legendLayers = new List<Layer>()
+        private ObservableCollection<Layer> _legendLayers = new ObservableCollection<Layer>()
         {
             new ArcGISTiledMapServiceLayer(new Uri("http://services.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer"))
         };
@@ -33,7 +35,7 @@ namespace GISRuntimeMvvm
         public event EventHandler<NotificationEventArgs<Exception>> ErrorNotice;
 
         // TODO: Add properties using the mvvmprop code snippet
-        public IEnumerable<Layer> LegendLayers
+        public ObservableCollection<Layer> LegendLayers
         {
             get
             {
@@ -48,8 +50,28 @@ namespace GISRuntimeMvvm
                 }
             }
         }
-        // TODO: Add methods that will be called by the view
 
+        //TODO:  Add Commands
+        public DelegateCommand<MapView> LoadCommand
+        {
+            get
+            {
+                return new DelegateCommand<MapView>(mapView =>
+                {
+                    LegendLayers = mapView.Map.Layers;
+                   // LegendLayers.Add(new ArcGISTiledMapServiceLayer(new Uri("http://services.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer")));
+                });
+            }
+        }
+
+        // TODO: Add methods that will be called by the view
+        public void AddData()
+        {
+            var addDataView = new AddDataView();
+            var addDataViewModel = addDataView.DataContext as AddDataViewModel;
+            addDataViewModel.LegendLayers = LegendLayers;
+            addDataView.ShowDialog();
+        }
         // TODO: Optionally add callback methods for async calls to the service agent
 
         // Helper method to notify View of an error
