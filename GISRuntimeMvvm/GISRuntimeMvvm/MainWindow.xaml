@@ -30,8 +30,12 @@
             <!--菜单栏-->
             <Menu HorizontalAlignment="Left" DockPanel.Dock="Top">
                 <MenuItem Header="文件"></MenuItem>
-                <MenuItem Header="关于"></MenuItem>
-                <MenuItem Header="帮助"></MenuItem>
+                <MenuItem Header="图层">
+                    <MenuItem Header="添加图层"></MenuItem>
+                    <MenuItem Header="创建图层"></MenuItem>
+                </MenuItem>
+                <MenuItem Header="栅格"></MenuItem>
+                <MenuItem Header="空间分析"></MenuItem>
             </Menu>
             <!--toolbar-->
             <ToolBarPanel HorizontalAlignment="Left" DockPanel.Dock="Top">
