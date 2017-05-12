@@ -108,5 +108,9 @@ E:\Programing\c#\ArcGISRuntimeCompositeDemo\GISRuntimeMvvm\GISRuntimeMvvm\obj\x8
 E:\Programing\c#\ArcGISRuntimeCompositeDemo\GISRuntimeMvvm\GISRuntimeMvvm\obj\x86\Debug\SimpleMvvm-Wpf.g.resources
 E:\Programing\c#\ArcGISRuntimeCompositeDemo\GISRuntimeMvvm\GISRuntimeMvvm\obj\x86\Debug\GISRuntimeMvvm.Properties.Resources.resources
 E:\Programing\c#\ArcGISRuntimeCompositeDemo\GISRuntimeMvvm\GISRuntimeMvvm\obj\x86\Debug\GISRuntimeMvvm.csproj.GenerateResource.Cache
-E:\Programing\c#\ArcGISRuntimeCompositeDemo\GISRuntimeMvvm\GISRuntimeMvvm\obj\x86\Debug\Views\AddDataView.baml
-E:\Programing\c#\ArcGISRuntimeCompositeDemo\GISRuntimeMvvm\GISRuntimeMvvm\obj\x86\Debug\Views\AddDataView.g.cs
+E:\Programing\c#\ArcGISRuntimeCompositeDemo\GISRuntimeMvvm\GISRuntimeMvvm\obj\x86\Debug\Views\PropertyQueryView.baml
+E:\Programing\c#\ArcGISRuntimeCompositeDemo\GISRuntimeMvvm\GISRuntimeMvvm\obj\x86\Debug\Views\PropertyTableView.baml
+E:\Programing\c#\ArcGISRuntimeCompositeDemo\GISRuntimeMvvm\GISRuntimeMvvm\obj\x86\Debug\Views\PropertyQueryView.g.cs
+E:\Programing\c#\ArcGISRuntimeCompositeDemo\GISRuntimeMvvm\GISRuntimeMvvm\obj\x86\Debug\Views\PropertyTableView.g.cs
+E:\Programing\c#\ArcGISRuntimeCompositeDemo\GISRuntimeMvvm\GISRuntimeMvvm\obj\x86\Debug\Views\AddServiceLayerView.baml
+E:\Programing\c#\ArcGISRuntimeCompositeDemo\GISRuntimeMvvm\GISRuntimeMvvm\obj\x86\Debug\Views\AddServiceLayerView.g.cs

@@ -23,19 +23,37 @@
         
         <!--头部-->
         <DockPanel Grid.Row="0" Name="header">
-            <!--<Grid.RowDefinitions>
-                <RowDefinition></RowDefinition>
-                <RowDefinition></RowDefinition>
-            </Grid.RowDefinitions>-->
             <!--菜单栏-->
             <Menu HorizontalAlignment="Left" DockPanel.Dock="Top">
                 <MenuItem Header="文件"></MenuItem>
                 <MenuItem Header="图层">
-                    <MenuItem Header="添加图层"></MenuItem>
-                    <MenuItem Header="创建图层"></MenuItem>
+                    <MenuItem Header="添加图层">
+                        <MenuItem Header="动态图层">
+                            <MenuItem Header="ArcGISDynamicMapServiceLayer"></MenuItem>
+                            <MenuItem Header="ArcGISImageServiceLayer"></MenuItem>
+                            <MenuItem Header="ArcGISLocalDynamicMapServiceLayer"></MenuItem>
+                            <MenuItem Header="WMSLayer"></MenuItem>
+                        </MenuItem>
+                        <MenuItem Header="瓦片图层">
+                            <MenuItem Header="WMTSLayer"></MenuItem>
+                            <MenuItem Header="ArcGISTiledMapServiceLayer"></MenuItem>
+                            <MenuItem Header="OpenStreetMapLayer"></MenuItem>
+                            <MenuItem Header="WebTiledLayer"></MenuItem>
+                        </MenuItem>
+                        <MenuItem Header="要素图层">
+                            <MenuItem Header="ServiceFeatureLayer"></MenuItem>
+                            <MenuItem Header="LocalGeodatabaseFeatureLayer"></MenuItem>
+                            <MenuItem Header="ShapefileFeatureLayer"></MenuItem>
+                        </MenuItem>
+                    </MenuItem>
+                    <MenuItem Header="创建图层">
+                        <MenuItem Header="GraphicsLayer"></MenuItem>
+                    </MenuItem>
                 </MenuItem>
                 <MenuItem Header="栅格"></MenuItem>
-                <MenuItem Header="空间分析"></MenuItem>
+                <MenuItem Header="空间分析">
+                    <MenuItem Header="网络分析"></MenuItem>
+                </MenuItem>
             </Menu>
             <!--toolbar-->
             <ToolBarPanel HorizontalAlignment="Left" DockPanel.Dock="Top">
@@ -125,8 +143,7 @@
                     <TabItem Header="二维地图">
                         <esri:MapView x:Name="mainMapView">
                             <esri:Map x:Name="mainMap">
-                                <esri:ArcGISTiledMapServiceLayer  
-                                    ServiceUri="http://services.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer"/>
+                                <esri:ArcGISTiledMapServiceLayer   ServiceUri="http://services.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer"/>
                             </esri:Map>
                         </esri:MapView>
                     </TabItem>

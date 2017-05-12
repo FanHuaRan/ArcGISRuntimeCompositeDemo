@@ -78,9 +78,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="ViewModels\AddDataViewModel.cs" />
-    <Compile Include="Views\AddDataView.xaml.cs">
-      <DependentUpon>AddDataView.xaml</DependentUpon>
+    <Compile Include="ViewModels\AddServiceLayerViewModel.cs" />
+    <Compile Include="Views\AddServiceLayerView.xaml.cs">
+      <DependentUpon>AddServiceLayerView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\CustomerView.xaml.cs">
       <DependentUpon>CustomerView.xaml</DependentUpon>
@@ -90,7 +90,13 @@
     <Compile Include="Services\ICustomerServiceAgent.cs" />
     <Compile Include="Services\MockCustomerServiceAgent.cs" />
     <Compile Include="ViewModels\CustomerViewModel.cs" />
-    <Page Include="Views\AddDataView.xaml">
+    <Compile Include="Views\PropertyQueryView.xaml.cs">
+      <DependentUpon>PropertyQueryView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PropertyTableView.xaml.cs">
+      <DependentUpon>PropertyTableView.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Views\AddServiceLayerView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -110,6 +116,14 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\PropertyQueryView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PropertyTableView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\Customer.cs" />
