@@ -79,6 +79,9 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="ViewModels\AddServiceLayerViewModel.cs" />
+    <Compile Include="Views\AddLocalNormalLayerView.xaml.cs">
+      <DependentUpon>AddLocalNormalLayerView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\AddServiceLayerView.xaml.cs">
       <DependentUpon>AddServiceLayerView.xaml</DependentUpon>
     </Compile>
@@ -96,6 +99,10 @@
     <Compile Include="Views\PropertyTableView.xaml.cs">
       <DependentUpon>PropertyTableView.xaml</DependentUpon>
     </Compile>
+    <Page Include="Views\AddLocalNormalLayerView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\AddServiceLayerView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

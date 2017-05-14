@@ -6,46 +6,114 @@ using System.Collections.ObjectModel;
 // Toolkit namespace
 using SimpleMvvmToolkit;
 using Esri.ArcGISRuntime.Layers;
+using Esri.ArcGISRuntime.Data;
 
 namespace GISRuntimeMvvm
 {
-    /// <summary>
-    /// This class contains properties that a View can data bind to.
-    /// <para>
-    /// Use the <strong>mvvmprop</strong> snippet to add bindable properties to this ViewModel.
-    /// </para>
-    /// </summary>
-    public class AddDataViewModel : ViewModelBase<AddDataViewModel>
+   /// <summary>
+   /// 服务图层添加ViewModel
+   /// 2017/05/14
+   /// </summary>
+    public class AddServiceLayerViewModel : ViewModelBase<AddServiceLayerViewModel>
     {
-        //Fields
-        private ObservableCollection<Layer> _legendLayers = new ObservableCollection<Layer>();
-        // Default ctor
-        public AddDataViewModel() { }
-
-        
-        // TODO: Add events to notify the view or obtain data from the view
-        public event EventHandler<NotificationEventArgs<Exception>> ErrorNotice;
-
-        // TODO: Add properties using the mvvmprop code snippet
-        public ObservableCollection<Layer> LegendLayers
+        //图层名称字段
+        private String _displayName;
+        //图层地址字段
+        private string _serviceUrl;
+        /// <summary>
+        /// 添加图层类型
+        /// </summary>
+        public Type ServiceLayerType { get; set; }
+        /// <summary>
+        /// 图层名称属性
+        /// </summary>
+        public String DisplayName
         {
-            get
-            {
-                return _legendLayers;
-            }
+            get { return _displayName; }
             set
             {
-                if (_legendLayers != value)
+                if (_displayName != value)
                 {
-                    this._legendLayers = value;
-                    NotifyPropertyChanged(p => p.LegendLayers);
+                    _displayName = value;
+                    NotifyPropertyChanged(p => p.DisplayName);
                 }
             }
         }
-        // TODO: Add methods that will be called by the view
+        /// <summary>
+        /// 图层地址属性
+        /// </summary>
+        public string ServiceUrl
+        {
+            get { return _serviceUrl; }
+            set
+            {
+                if (_serviceUrl != value)
+                {
+                    _serviceUrl = value;
+                    NotifyPropertyChanged(p => p.ServiceUrl);
+                }
+            }
+        }
+        /// <summary>
+        /// 主地图图层集合
+        /// </summary>
+        public ObservableCollection<Layer> LegendLayers { get; set; }
+        /// <summary>
+        /// 图层添加命令 实例化图层应用了反射
+        /// </summary>
+        public DelegateCommand<Window> AddLayerCommand
+        {
+            get
+            {
+                return new DelegateCommand<Window>(window =>
+                {
+                    Layer layer = null;
+                    try
+                    {
+                        if (ServiceLayerType != typeof(FeatureLayer))
+                        {
+                            layer = Activator.CreateInstance(ServiceLayerType, new Uri(ServiceUrl)) as Layer;
+                            layer.DisplayName = DisplayName;
+                        }
+                        else
+                        {
+                            var table = new ServiceFeatureTable()
+                            {
+                                ServiceUri = ServiceUrl
+                            };
+                            var featureLayer = new FeatureLayer()
+                            {
+                                DisplayName = _displayName,
+                                FeatureTable = table
+                            };
+                        }
+                        this.LegendLayers.Add(layer);
+                        window.Close();
+                    }
+                    catch (Exception e)
+                    {
+                        MessageBox.Show("请检查图层地址是否正确");
+                    }
+                });
+            }
+        }
+        /// <summary>
+        /// 窗口关闭命令
+        /// </summary>
+        public DelegateCommand<Window> CloseCommand
+        {
+            get
+            {
+                return new DelegateCommand<Window>(window =>
+                {
+                    window.Close();
+                });
+            }
+        }
 
-        // TODO: Optionally add callback methods for async calls to the service agent
-        
+        // TODO: Add events to notify the view or obtain data from the view
+        public event EventHandler<NotificationEventArgs<Exception>> ErrorNotice;
+
         // Helper method to notify View of an error
         private void NotifyError(string message, Exception error)
         {

@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 E:\Programing\c#\ArcGISRuntimeCompositeDemo\GISRuntimeMvvm\GISRuntimeMvvm\App.xaml
-51420370622
+6152323003
 
-16187549551
+17-393033576
 221920637065
-Views\AddServiceLayerView.xaml;Views\CustomerView.xaml;MainWindow.xaml;Views\PropertyQueryView.xaml;Views\PropertyTableView.xaml;
+Views\AddLocalNormalLayerView.xaml;Views\AddServiceLayerView.xaml;Views\CustomerView.xaml;MainWindow.xaml;Views\PropertyQueryView.xaml;Views\PropertyTableView.xaml;
 
 False
 

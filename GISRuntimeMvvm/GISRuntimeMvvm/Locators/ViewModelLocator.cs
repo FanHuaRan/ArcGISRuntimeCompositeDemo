@@ -51,9 +51,9 @@ namespace GISRuntimeMvvm
         }
 
         // Create AddDataViewModel on demand
-        public AddDataViewModel AddDataViewModel
+        public AddServiceLayerViewModel AddServiceLayerViewModel
         {
-            get { return new AddDataViewModel(); }
+            get { return new AddServiceLayerViewModel(); }
         }
 
         // Create CustomerViewModel on demand

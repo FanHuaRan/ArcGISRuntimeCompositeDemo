@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 namespace GISRuntimeMvvm.Views
 {
     /// <summary>
-    /// AddDataView.xaml 的交互逻辑
+    /// AddLocalNormalLayerView.xaml 的交互逻辑
     /// </summary>
-    public partial class AddServiceLayerView : Window
+    public partial class AddLocalNormalLayerView : Window
     {
-        public AddServiceLayerView()
+        public AddLocalNormalLayerView()
         {
             InitializeComponent();
         }

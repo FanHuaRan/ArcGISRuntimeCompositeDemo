@@ -1,0 +1,40 @@
+﻿<Window x:Class="GISRuntimeMvvm.Views.AddLocalNormalLayerView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
+        Title="AddLocalNormalLayerView" Height="200" Width="350"
+        WindowStartupLocation="CenterScreen" 
+        DataContext="{Binding Source={StaticResource Locator},Path=AddServiceLayerViewModel}">
+    <Grid>
+        <TextBlock HorizontalAlignment="Left" Margin="25,23,0,0" TextWrapping="Wrap" Text="图层名称：" VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="90,20,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="176"/>
+        <TextBlock HorizontalAlignment="Left" Margin="25,67,0,0" TextWrapping="Wrap" Text="文件路径：" VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="90,64,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="176"/>
+        <Button Content="添加" HorizontalAlignment="Left" Margin="25,125,0,0" VerticalAlignment="Top" Width="75">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="Click">
+                    <i:InvokeCommandAction Command="{Binding AddLayerCommand}" CommandParameter="{Binding ElementName=addLayerWindow}"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </Button>
+        <Button Content="校验" HorizontalAlignment="Left" Margin="116,125,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.147,0.182">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="Click">
+                    <ei:CallMethodAction 
+                            TargetObject="{Binding}"
+                            MethodName="CheckLayer"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </Button>
+        <Button Content="取消" HorizontalAlignment="Left" Margin="207,125,0,0" VerticalAlignment="Top" Width="75">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="Click">
+                    <i:InvokeCommandAction Command="{Binding CloseCommand}" CommandParameter="{Binding ElementName=addLayerWindow}"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </Button>
+        <Button Content="选择" HorizontalAlignment="Left" Margin="275,67,0,0" VerticalAlignment="Top" Width="57" Height="20"/>
+    </Grid>
+</Window>
+

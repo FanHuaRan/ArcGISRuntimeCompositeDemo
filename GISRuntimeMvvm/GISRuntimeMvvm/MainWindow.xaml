@@ -29,7 +29,13 @@
                 <MenuItem Header="图层">
                     <MenuItem Header="添加图层">
                         <MenuItem Header="动态图层">
-                            <MenuItem Header="ArcGISDynamicMapServiceLayer"></MenuItem>
+                            <MenuItem x:Name="dynamicMapServiceLayerMenuItem"  Header="ArcGISDynamicMapServiceLayer" Tag="Esri.ArcGISRuntime.Layers.ArcGISDynamicMapServiceLayer">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Click">
+                                        <i:InvokeCommandAction Command="{Binding AddNormalServiceLayerCommand}" CommandParameter="{Binding  ElementName=dynamicMapServiceLayerMenuItem,Path=Tag}"/>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </MenuItem>
                             <MenuItem Header="ArcGISImageServiceLayer"></MenuItem>
                             <MenuItem Header="ArcGISLocalDynamicMapServiceLayer"></MenuItem>
                             <MenuItem Header="WMSLayer"></MenuItem>
@@ -37,7 +43,13 @@
                         <MenuItem Header="瓦片图层">
                             <MenuItem Header="WMTSLayer"></MenuItem>
                             <MenuItem Header="ArcGISTiledMapServiceLayer"></MenuItem>
-                            <MenuItem Header="OpenStreetMapLayer"></MenuItem>
+                            <MenuItem Header="OpenStreetMapLayer">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Click">
+                                        <ei:CallMethodAction TargetObject="{Binding}" MethodName="AddOpenStreet"/>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </MenuItem>
                             <MenuItem Header="WebTiledLayer"></MenuItem>
                         </MenuItem>
                         <MenuItem Header="要素图层">

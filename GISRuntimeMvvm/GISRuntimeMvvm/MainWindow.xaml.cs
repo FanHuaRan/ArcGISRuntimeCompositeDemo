@@ -24,5 +24,10 @@ namespace GISRuntimeMvvm
         {
             InitializeComponent();
         }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

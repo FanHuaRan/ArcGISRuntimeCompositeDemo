@@ -114,3 +114,5 @@ E:\Programing\c#\ArcGISRuntimeCompositeDemo\GISRuntimeMvvm\GISRuntimeMvvm\obj\x8
 E:\Programing\c#\ArcGISRuntimeCompositeDemo\GISRuntimeMvvm\GISRuntimeMvvm\obj\x86\Debug\Views\PropertyTableView.g.cs
 E:\Programing\c#\ArcGISRuntimeCompositeDemo\GISRuntimeMvvm\GISRuntimeMvvm\obj\x86\Debug\Views\AddServiceLayerView.baml
 E:\Programing\c#\ArcGISRuntimeCompositeDemo\GISRuntimeMvvm\GISRuntimeMvvm\obj\x86\Debug\Views\AddServiceLayerView.g.cs
+E:\Programing\c#\ArcGISRuntimeCompositeDemo\GISRuntimeMvvm\GISRuntimeMvvm\obj\x86\Debug\Views\AddLocalNormalLayerView.baml
+E:\Programing\c#\ArcGISRuntimeCompositeDemo\GISRuntimeMvvm\GISRuntimeMvvm\obj\x86\Debug\Views\AddLocalNormalLayerView.g.cs
