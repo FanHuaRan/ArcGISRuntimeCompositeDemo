@@ -56,6 +56,14 @@ namespace GISRuntimeMvvm
             get { return new AddServiceLayerViewModel(); }
         }
 
+        public AddLocalNormalLayerViewModel AddLocalNormalLayerViewModel
+        {
+            get
+            {
+                return new AddLocalNormalLayerViewModel();
+            }
+        }
+
         // Create CustomerViewModel on demand
         public CustomerViewModel CustomerViewModel
         {

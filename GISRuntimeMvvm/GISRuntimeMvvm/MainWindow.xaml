@@ -43,6 +43,7 @@
                         <MenuItem Header="瓦片图层">
                             <MenuItem Header="WMTSLayer"></MenuItem>
                             <MenuItem Header="ArcGISTiledMapServiceLayer"></MenuItem>
+                            <MenuItem Header="ArcGISLocalTiledLayer" Command="{Binding  AddLocalNormalLayerCommand}"></MenuItem>
                             <MenuItem Header="OpenStreetMapLayer">
                                 <i:Interaction.Triggers>
                                     <i:EventTrigger EventName="Click">

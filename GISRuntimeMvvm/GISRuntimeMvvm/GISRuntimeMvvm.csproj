@@ -78,6 +78,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ViewModels\AddLocalNormalLayerViewModel.cs" />
     <Compile Include="ViewModels\AddServiceLayerViewModel.cs" />
     <Compile Include="Views\AddLocalNormalLayerView.xaml.cs">
       <DependentUpon>AddLocalNormalLayerView.xaml</DependentUpon>

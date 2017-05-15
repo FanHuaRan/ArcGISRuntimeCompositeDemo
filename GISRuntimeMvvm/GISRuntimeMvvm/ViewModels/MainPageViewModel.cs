@@ -73,6 +73,19 @@ namespace GISRuntimeMvvm
                 });
             }
         }
+        public DelegateCommand AddLocalNormalLayerCommand
+        {
+            get
+            {
+                return new DelegateCommand(() =>
+                {
+                    var addNLView = new AddLocalNormalLayerView();
+                    var addNLViewModel = addNLView.DataContext as AddLocalNormalLayerViewModel;
+                    addNLViewModel.LegendLayers = LegendLayers;
+                    addNLView.ShowDialog();
+                });
+            }
+        }
 
         // TODO: Add methods that will be called by the view
         public void AddData()
