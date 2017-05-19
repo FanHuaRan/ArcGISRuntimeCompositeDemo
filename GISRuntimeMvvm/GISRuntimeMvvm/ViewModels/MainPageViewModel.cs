@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using Esri.ArcGISRuntime.Controls;
 using GISRuntimeMvvm.Views;
 using System.Reflection;
+using System.Diagnostics;
 
 namespace GISRuntimeMvvm
 {
@@ -22,14 +23,11 @@ namespace GISRuntimeMvvm
     {
         private static Assembly arcGISAssembly = Assembly.Load("Esri.ArcGISRuntime");
 
-        private ObservableCollection<Layer> _legendLayers = new ObservableCollection<Layer>()
-        {
-            new ArcGISTiledMapServiceLayer(new Uri("http://services.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer"))
-        };
+        private LayerCollection _legendLayers = null;
 
         public MainPageViewModel() { }
 
-        public ObservableCollection<Layer> LegendLayers
+        public LayerCollection LegendLayers
         {
             get
             {
@@ -53,8 +51,19 @@ namespace GISRuntimeMvvm
                 return new DelegateCommand<MapView>(mapView =>
                 {
                     LegendLayers = mapView.Map.Layers;
-                    new ArcGISDynamicMapServiceLayer();
                    // LegendLayers.Add(new ArcGISTiledMapServiceLayer(new Uri("http://services.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer")));
+                   // Debug.Print(mapView.Map.Layers.Count.ToString());
+                });
+            }
+        }
+
+        public DelegateCommand<MapView> MainMapLoadCommand
+        {
+            get
+            {
+                return new DelegateCommand<MapView>(smallMapview =>
+                {
+                    smallMapview.Map.Layers = LegendLayers;
                 });
             }
         }
@@ -99,6 +108,7 @@ namespace GISRuntimeMvvm
                 if (layer.GetType() == typeof(OpenStreetMapLayer))
                 {
                     MessageBox.Show("已经存在OpenLayer图层，不必重新添加");
+                    return;
                 }
             }
             _legendLayers.Add(new OpenStreetMapLayer());

@@ -144,7 +144,13 @@
                 </Grid>
                 <!--鹰眼mapview-->
                 <esri:MapView x:Name="smallMapView" Grid.Row="1" BorderThickness="2">
-                    <esri:Map Layers="{Binding  LegendLayers,Mode=OneWay}"></esri:Map>
+                    <!--Load事件中将鹰眼图层与Legend图层挂接-->
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Loaded">
+                            <i:InvokeCommandAction Command="{Binding MainMapLoadCommand}" CommandParameter="{Binding ElementName=smallMapView}"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                    <esri:Map></esri:Map>
                 </esri:MapView>
             </Grid>
             
@@ -156,7 +162,7 @@
                     <TabItem Header="二维地图">
                         <esri:MapView x:Name="mainMapView">
                             <esri:Map x:Name="mainMap">
-                                <esri:ArcGISTiledMapServiceLayer   ServiceUri="http://services.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer"/>
+                                <esri:ArcGISTiledMapServiceLayer   ServiceUri="http://services.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer" DisplayName="底图"/>
                             </esri:Map>
                         </esri:MapView>
                     </TabItem>
